@@ -1,0 +1,243 @@
+@font-face {
+    font-family: myFont;
+    /* src: url(/fonts/TheWildBreathOfZelda-15Lv.ttf); */
+    /* src: url(/fonts/Space\ Game.ttf); */
+    /* src: url(/fonts/Triforce-y07d.ttf); */
+    src:url(/fonts/04B_30__.TTF);
+    /* src: url(/fonts/VCR_OSD_MONO_1.001.ttf); */
+} 
+
+body{
+    font-family: myFont;
+    background-color: #272744;
+    overflow: hidden; /* Ensure the background doesn't cause scrollbars */
+    margin: 0;
+
+
+
+
+
+}
+
+.screen {
+    width: 100%;
+    height: 100vh;
+    background-color: #272744;
+
+    position: relative;
+    overflow-y: hidden;
+}
+
+.environment {
+    width: 60%;
+    margin: 0 auto;
+    /* background-color: #494d7e; */
+}
+
+.blockEnvironment {
+    width: 50%;
+    margin: 0 auto; 
+    /* background-color: #494d7e; */
+}
+
+.floor {
+    width: 100%;
+    height: 100px;
+    position: relative;
+    top: 400px;
+    background-color: #8b6d9c;
+    border: #fbf5ef 3px solid;  
+    border-radius: 5px;
+    z-index: 2; /* Place behind other content */
+
+
+}
+
+.block {
+    width: 600px;
+    height: 70px;
+    background-color: #c69fa5;
+    top: 400px;
+    position: relative; 
+    border-radius: 5px;
+    z-index: 2; /* Place behind other content */
+
+}
+
+.active {
+    background-color: #fbf5ef
+    ;
+    animation-name: sideToSide;
+    animation-duration: 6s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    position: relative;
+
+}
+
+@keyframes sideToSide {
+    0% {
+        left: -400px;
+    }
+    50% {
+        left: 400px;
+    }
+    100% {
+        left: -400px;
+    }
+}
+
+
+.score { 
+    font-size: 100px;
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 20px;
+    color: #f2d3ab;
+    z-index: 2; /* Place behind other content */
+
+}
+
+.gameOverMessage {
+    font-size: 100px;
+    position: relative;
+    top: 30px;
+    text-align: center;
+    z-index: 2; /* Place behind other content */
+    color: #f2d3ab;
+
+
+
+}
+
+.bird-container-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* So birds don't interfere with other interactions */
+    z-index: -1; /* Place behind other content */
+}
+
+.bird {
+    background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/174479/bird-cells-new.svg');
+    filter: invert(34%) sepia(55%) saturate(427%) hue-rotate(141deg) brightness(93%) contrast(91%);
+    background-size: auto 100%;
+    width: 88px;
+    height: 125px;
+    will-change: background-position;
+    animation-name: fly-cycle;
+    animation-timing-function: steps(10);
+    animation-iteration-count: infinite;
+}
+
+.bird-one {
+    animation-duration: 1s;
+    animation-delay: -0.5s;
+}
+
+.bird-two {
+    animation-duration: 0.9s;
+    animation-delay: -0.75s;
+}
+
+.bird-three {
+    animation-duration: 1.25s;
+    animation-delay: -0.25s;
+}
+
+.bird-four {
+    animation-duration: 1.1s;
+    animation-delay: -0.5s;
+}
+
+.bird-container {
+    position: absolute;
+    left: -10%;
+    transform: scale(0.3) translateX(-10vw);
+    will-change: transform;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+.bird-container-one {
+    animation-name: fly-right-one;
+    animation-duration: 15s;
+}
+
+.bird-container-two {
+    animation-name: fly-right-two;
+    animation-duration: 16s;
+}
+
+.bird-container-three {
+    animation-name: fly-right-one;
+    animation-duration: 14.6s;
+}
+
+.bird-container-four {
+    animation-name: fly-right-two;
+    animation-duration: 16s;
+}
+
+@keyframes fly-cycle {
+    100% {
+        background-position: -900px 0;
+    }
+}
+
+@keyframes fly-right-one {
+    0% {
+        transform: scale(0.3) translateX(-10vw);
+    }
+    10% {
+        transform: translateY(2vh) translateX(10vw) scale(0.4);
+    }
+    20% {
+        transform: translateY(0vh) translateX(30vw) scale(0.5);
+    }
+    30% {
+        transform: translateY(4vh) translateX(50vw) scale(0.6);
+    }
+    40% {
+        transform: translateY(2vh) translateX(70vw) scale(0.6);
+    }
+    50% {
+        transform: translateY(0vh) translateX(90vw) scale(0.6);
+    }
+    60% {
+        transform: translateY(0vh) translateX(110vw) scale(0.6);
+    }
+    100% {
+        transform: translateY(0vh) translateX(110vw) scale(0.6);
+    }
+}
+
+@keyframes fly-right-two {
+    0% {
+        transform: translateY(-2vh) translateX(-10vw) scale(0.5);
+    }
+    10% {
+        transform: translateY(0vh) translateX(10vw) scale(0.4);
+    }
+    20% {
+        transform: translateY(-4vh) translateX(30vw) scale(0.6);
+    }
+    30% {
+        transform: translateY(1vh) translateX(50vw) scale(0.45);
+    }
+    40% {
+        transform: translateY(-2.5vh) translateX(70vw) scale(0.5);
+    }
+    50% {
+        transform: translateY(0vh) translateX(90vw) scale(0.45);
+    }
+    51% {
+        transform: translateY(0vh) translateX(110vw) scale(0.45);
+    }
+    100% {
+        transform: translateY(0vh) translateX(110vw) scale(0.45);
+    }
+}
